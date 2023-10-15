@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav id="navbar">
+        <div id="logo">
+            <img src="logo.jpg" alt="Hello~~~~~~">
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#fbox">Form</a></li>
+        </ul>
+    </nav>
+    <section id="home">
+        <h1 class="head">Say Hello!!</h1>
+        <p class="pbox">You Can Say Hello here</p>
+        <button id="validateButton">Hello</button>
+    </section>
+    <section id="fbox">
+        <h1 class="head">Fill Up</h1>
+        <div id="form-box">
+            <form id="myForm">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name">
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email">
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password">
+                </div>
+                <div>
+                    <button class="btn" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        const form = document.getElementById("myForm");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (name.trim() === "") {
+                alert("Name is required");
+                return;
+            }
+
+            if (email.trim() === "") {
+                alert("Email is required");
+                return;
+            }
+            if (!isValidEmail(email)) {
+                alert("Invalid email format");
+                return;
+            }
+
+            if (password.trim() === "") {
+                alert("Password is required");
+                return;
+            }
+
+           
+            alert("Form submitted successfully!");
+           
+        });
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+    
+const validateButton = document.getElementById('validateButton');
+validateButton.addEventListener('click', function() {
+    alert('Hello');
+});
+
+    </script>
+</body>
+
+</html>
